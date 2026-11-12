@@ -172,7 +172,7 @@ ifdef GITHUB_ACTIONS
 	pip3 install fdt toml configobj pycryptodomex
 endif
 	rm -rf sdk/OpenBL602
-	git clone --depth=1 https://github.com sdk/OpenBL602
+	git clone --depth=1 https://github.com/giedriuslt/OpenBL602.git sdk/OpenBL602
 	@if [ -e platforms/BL602/pre_build.sh ]; then \
 		echo "prebuild found for OpenBL602"; \
 		sh platforms/BL602/pre_build.sh; \
