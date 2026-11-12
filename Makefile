@@ -171,12 +171,24 @@ prebuild_OpenBL602: berry
 ifdef GITHUB_ACTIONS
 	pip3 install fdt toml configobj pycryptodomex
 endif
-	git submodule update --init --recursive --depth=1 sdk/OpenBL602
+	rm -rf sdk/OpenBL602
+	git clone --depth=1 https://github.com sdk/OpenBL602
 	@if [ -e platforms/BL602/pre_build.sh ]; then \
 		echo "prebuild found for OpenBL602"; \
 		sh platforms/BL602/pre_build.sh; \
 	else echo "prebuild for OpenBL602 not found ... "; \
 	fi
+
+#prebuild_OpenBL602: berry
+#ifdef GITHUB_ACTIONS
+#	pip3 install fdt toml configobj pycryptodomex
+#endif
+#	git submodule update --init --recursive --depth=1 sdk/OpenBL602
+#	@if [ -e platforms/BL602/pre_build.sh ]; then \
+#		echo "prebuild found for OpenBL602"; \
+#		sh platforms/BL602/pre_build.sh; \
+#	else echo "prebuild for OpenBL602 not found ... "; \
+#	fi
 
 prebuild_OpenLN882H: berry
 	git submodule update --init --recursive --depth=1 sdk/OpenLN882H
